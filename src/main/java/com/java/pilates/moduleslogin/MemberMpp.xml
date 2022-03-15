@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.java.pilates.moduleslogin.LoginMpp">
+
+    <resultMap id="resultMapObj" type="com.java.pilates.moduleslogin.Login"></resultMap>
+
+	<select id="selectList" resultMap="resultMapObj">
+			select
+				pilmmSeq
+				,pilmmId
+				, pilmmName
+				, pilmmPassword
+			
+			from
+				pilatesMember
+						WHERE 1=1
+							<choose>
+					<when test="shPilmmDelNy==1">AND pilmmDelNy=1</when>
+					<when test="shPilmmDelNy==0">AND pilmmDelNy=0</when>
+				</choose>
+			<if test="shPilmmName != null and !shPilmmName.equals('')"> 
+			 AND PilmmName LIKE concat('%',#{shPilmmName},'%')
+			 </if> 
+	</select> 
+
+	
+</mapper>
