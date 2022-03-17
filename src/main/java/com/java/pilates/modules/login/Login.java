@@ -1,10 +1,15 @@
-package com.java.pilates.moduleslogin;
+package com.java.pilates.modules.login;
+
+
+import com.java.pilates.modules.login.Login;
 
 public class Login {
 	private String pilmmSeq = "";
 	private String pilmmId = "";
 	private String pilmmName= "";
 	private String pilmmPassword= "";
+	private String pilmmDelNy= "";
+	
 	public String getPilmmSeq() {
 		return pilmmSeq;
 	}
@@ -28,5 +33,11 @@ public class Login {
 	}
 	public void setPilmmPassword(String pilmmPassword) {
 		this.pilmmPassword = pilmmPassword;
+	}
+	public String getPilmmDelNy() {
+		return pilmmDelNy;
+	}
+	public void setPilmmDelNy(String pilmmDelNy) {
+		this.pilmmDelNy = pilmmDelNy;
 	}
 }
