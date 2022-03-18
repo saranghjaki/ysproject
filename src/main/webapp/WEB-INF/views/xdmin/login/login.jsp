@@ -154,14 +154,15 @@
 		<div class="container">
 		 <div class="row md-2 justify-content-center mb-3 mt-5 ">
 	 			  <div class="col-12 col-md-6 col-lg-4">
-				    <input type="email" class="form-control" id="inputEmail3" placeholder="아이디">  
+				    <input type="text" class="form-control" name="pilmmName" id="pilmmNameLogin" placeholder="아이디">  
+				    
 				   </div>
 			   </div>
 		  </div>
 		 <div class="container">
  			<div class="row md-2 justify-content-center ">
 	  		   <div class="col-12 col-md-6 col-lg-4">
-				        <input type="password" class="form-control" id="inputPassword3"  placeholder="비밀번호">
+				        <input type="password" class="form-control" name="pilmmPassword" id="inputPassword3"  placeholder="비밀번호">
 					  </div>
 				   </div>
 				  </div>
@@ -229,26 +230,7 @@
 	 	 </div>
 	</div>
 		
-	
-<c:choose>
-	<c:when test="${fn:length(list) eq 0}">
-		<tr>
-			<td class="text-center" colspan="9">There is no data!</td>
-		</tr>	
-	</c:when>
-	<c:otherwise>
-		<c:forEach items="${list}" var="item" varStatus="status">	
-		
-		<c:out value="${item.pilmmSeq}"/> 
-		<a href="/infra/member/memberView?pilmmSeq=<c:out value="${item.pilmmSeq}"/>">
-		<c:out value="${item.pilmmName}"/></a>
-		| <c:out value="${item.pilmmId}"/> <br>
-	
-		</c:forEach>
-	</c:otherwise>
-</c:choose>	 
-</form>	
-		
+
 		  
     <!-- e -->
 

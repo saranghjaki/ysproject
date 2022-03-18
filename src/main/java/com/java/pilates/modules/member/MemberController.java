@@ -26,6 +26,8 @@ public class MemberController {
 			if(count != 0) {
 				List<Member> list = service.selectList(vo);
 				model.addAttribute("list", list);
+				
+				
 			}else { 
 			
 			}
@@ -33,5 +35,5 @@ public class MemberController {
 		return "xdmin/member/memberList";
 	}
 
-
+	
 }

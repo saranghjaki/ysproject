@@ -10,7 +10,7 @@
 
 	<sql id="selectCommon">
 		FROM
-			pilatesMember
+			pilatesMember a
 		WHERE 1=1
 			<choose>
 				<when test="shPilmmDelNy==1">AND pilmmDelNy=1</when>
@@ -22,14 +22,27 @@
 	</sql>
 	
 	<select id="selectList" resultMap="resultMapObj">
-			select
-				pilmmSeq
-				,pilmmId
-				, pilmmName
-				,pilmmPassword
-		<include refid="selectCommon" />
-		limit #{startRnumForMysql},#{rowNumToShow}
-	</select>
+				SELECT
+				a.pilmmSeq
+				,a.pilmmName 
+				,(SELECT pilcdName FROM PILATESCODE WHERE 1=1 AND pilcgSeq=33 and  pilcdSeq=a.pilmmGenderCd)as pilmmGenderCd 
+				,a.pilmmDob
+			    ,b.pilmpNumber
+			    ,c.pilpyStartDate
+			    ,c.pilpyEndtDate
+			    ,a.pilmmMemberNumber
+			    ,(SELECT pilinName FROM  PILATESINSTRUCTOR WHERE 1=1 AND pilinSeq= d.pilinSeq) 
+			    ,c. pilpyDregisterDate
+			    ,(SELECT pilcdName FROM PILATESCODE WHERE 1=1 AND pilcgSeq=14 AND  pilcdSeq= e.pilpgNumberCd)
+			            FROM PILATESMEMBER as a
+					LEFT JOIN PILATESMEMBERPHONE AS b ON b.pilmmSeq=a.pilmmSeq
+					LEFT JOIN PILATESPAYMENT AS c ON c.pilmmSeq=a.pilmmSeq
+			        LEFT JOIN PILATESPROGRAMINSTRUCTOR AS d ON d.pilpgiSeq=c.pilpgiSeq
+			        LEFT JOIN PILATESPROGRAM AS e ON e.pilpgSeq=d.pilpgSeq
+        	   
+		
+			
+		</select>
 
 	<select id="selectOneCount" resultType="Integer">
 		SELECT

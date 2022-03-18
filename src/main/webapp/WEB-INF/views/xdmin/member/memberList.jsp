@@ -328,9 +328,9 @@
 				<td><div class="form-check">
 				    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></td>
 				<td><c:out value="${item.pilmmName}"/></td>
-				<td>여</td>
-				<td>생일</td>
-				<td>01011114525</td>
+				<td></td>
+				<td><c:out value="${item.pilmmDob}"/></td>
+				<td><c:out value="${item.pilmpNumber}"/></td>
 				<td>1</td>
 				<td>그룹필라테스8회</td>
 				<td>220101</td>
@@ -343,9 +343,9 @@
 				<td>220101</td>
 				<td>8</td>
 				<td>5</td>
+				</tr>
 				</c:forEach>
-			</tr>
-		</form>
+					</form>
 
 	
 		</table>

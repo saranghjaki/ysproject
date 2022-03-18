@@ -2,8 +2,19 @@ package com.java.pilates.modules.member;
 
 public class MemberVo {
 	
-	
+	/* list */
 	private String pilmmSeq = "";
+	private String pilinSeq = "";
+	private String pilcdSeq = "";
+	private String pilpgNumberCd = "";
+	private String pilpgiSeq = "";
+	private String pilpgSeq = "";
+	private String pilinName = "";
+	private String pilcdName = "";
+	private String pilmmGenderCd = "";
+
+	
+
 	/* member Search */
 	private String shPilmmName = "";
 	private Integer shPilmmDelNy;
@@ -70,7 +81,6 @@ public class MemberVo {
 		
 	}
 //----------------------------------------------------------//
-	
 
 	public String getPilmmSeq() {
 		return pilmmSeq;
@@ -78,6 +88,62 @@ public class MemberVo {
 
 	public void setPilmmSeq(String pilmmSeq) {
 		this.pilmmSeq = pilmmSeq;
+	}
+
+	public String getPilinSeq() {
+		return pilinSeq;
+	}
+
+	public void setPilinSeq(String pilinSeq) {
+		this.pilinSeq = pilinSeq;
+	}
+
+	public String getPilcdSeq() {
+		return pilcdSeq;
+	}
+
+	public void setPilcdSeq(String pilcdSeq) {
+		this.pilcdSeq = pilcdSeq;
+	}
+
+	public String getPilpgNumberCd() {
+		return pilpgNumberCd;
+	}
+
+	public void setPilpgNumberCd(String pilpgNumberCd) {
+		this.pilpgNumberCd = pilpgNumberCd;
+	}
+
+	public String getPilpgiSeq() {
+		return pilpgiSeq;
+	}
+
+	public void setPilpgiSeq(String pilpgiSeq) {
+		this.pilpgiSeq = pilpgiSeq;
+	}
+
+	public String getPilpgSeq() {
+		return pilpgSeq;
+	}
+
+	public void setPilpgSeq(String pilpgSeq) {
+		this.pilpgSeq = pilpgSeq;
+	}
+
+	public String getPilinName() {
+		return pilinName;
+	}
+
+	public void setPilinName(String pilinName) {
+		this.pilinName = pilinName;
+	}
+
+	public String getPilcdName() {
+		return pilcdName;
+	}
+
+	public void setPilcdName(String pilcdName) {
+		this.pilcdName = pilcdName;
 	}
 
 	public String getShPilmmName() {
@@ -183,5 +249,15 @@ public class MemberVo {
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
 	}
+
+	public String getPilmmGenderCd() {
+		return pilmmGenderCd;
+	}
+
+	public void setPilmmGenderCd(String pilmmGenderCd) {
+		this.pilmmGenderCd = pilmmGenderCd;
+	}
 	
+
+
 }
