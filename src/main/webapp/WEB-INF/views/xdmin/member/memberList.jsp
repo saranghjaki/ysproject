@@ -12,11 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="/pilates/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet" >
-	
-    <!-- Bootstrap CSS -->
- <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">  -->
-	
-	<link href="/pilates/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet" >
+	<link href="/pilates/resources/common/bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js" rel="stylesheet" >
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	 
 		
 	<script src="https://kit.fontawesome.com/916f7eb38d.js" crossorigin="anonymous"></script>
 	<script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -97,7 +96,7 @@
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
 	       <p class="text-center fw-bold fs-2">
-	       	<img src="../../../images/xdmin/member/pilates-icon.png" width="50em">
+	       	<img src="/pilates/resources/xdmin/image/pilates-icon.png" width="50em">
 	         PILATES SU
        		  	
 	        </p>
@@ -305,13 +304,10 @@
 				<th>성별</th>
 				<th>생년월일</th>
 				<th>hp</th>
-				<th>재등록</th>
 				<th>프로그램</th>
 				<th>시작일</th>
 				<th>만료일</th>
 				<th>잔여</th>
-				<th>싱세</th>
-				<th>티켓</th>
 				<th>카드번호</th>
 				<th>담당자</th>
 				<th>가입일</th>
@@ -323,34 +319,33 @@
 			<!-- meber list s -->
 			<form id="" name="" method="get" action="/infra/member/memberList">
 				<c:forEach items="${list}" var="item" varStatus="status">	
-			
 				<td><c:out value="${item.pilmmSeq}"/> </td>
 				<td><div class="form-check">
 				    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></td>
 				<td><c:out value="${item.pilmmName}"/></td>
-				<td></td>
+				<td><c:out value="${item.pilmmGenderCd}"/></td>
 				<td><c:out value="${item.pilmmDob}"/></td>
 				<td><c:out value="${item.pilmpNumber}"/></td>
-				<td>1</td>
-				<td>그룹필라테스8회</td>
-				<td>220101</td>
-				<td>220201</td>
-				<td>20일</td>
-				<td>싱세</td>
-				<td>티켓</td>
-				<td>4525</td>
-				<td>-</td>
-				<td>220101</td>
-				<td>8</td>
-				<td>5</td>
+				<td><c:out value="${item.pilpgName}"/></td>	
+				<td><c:out value="${item.pilpyStartDate}"/></td>
+				<td><c:out value="${item.pilpyEndtDate}"/></td>
+				<td>(시작일-마지막날 )</td>				
+				<td><c:out value="${item.pilinName}"/></td>				
+				<td><c:out value="${item.pilmmMemberNumber}"/></td>	
+				<td><c:out value="${item.pilpyDregisterDate}"/></td>	
+				<td><c:out value="${item.pilpgNumberCd}"/></td>	
+				<td>총횟수-출책</td>			
+				
+					
 				</tr>
 				</c:forEach>
 					</form>
-
-	
-		</table>
+						</table>
 	</div>
-	<nav aria-label="...">
+
+
+
+<nav aria-label="...">
   <ul class="pagination">
   
 		<c:if test="${vo.startPage gt vo.pageNumToShow}">
@@ -359,20 +354,25 @@
 		<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
 			<c:choose>
 				<c:when test="${i.index eq vo.thisPage}">
-		                <li class="page-item active"><a class="page-link" href="/infra/code/codeGroupList?thisPage=${i.index}">${i.index}</a></li>
+		                <li class="page-item active"><a class="page-link" href="/pilates/xdmin/member/memberList?thisPage=${i.index}">${i.index}</a></li>
 				</c:when>
 				<c:otherwise>             
-		                <li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}">${i.index}</a></li>
+		                <li class="page-item"><a class="page-link" href="/pilates/xdmin/member/memberList?thisPage=${i.index}">${i.index}</a></li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>     
 		<c:if test="${vo.endPage ne vo.totalPages}">                
-		                <li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.endPage + 1}">Next</a></li>
+		                <li class="page-item"><a class="page-link" href="/pilates/xdmin/member/memberList?thisPage=${vo.endPage + 1}">Next</a></li>
 		</c:if>  
   </ul>
 </nav>
-				
-		  
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/pilates/resources/common/js/validation.js"></script> <!-- js위치선정 -->
+
+<script type="text/javascript">
+	
+			</script>
     <!-- e -->
 
     <!-- Optional JavaScript; choose one of the two! -->

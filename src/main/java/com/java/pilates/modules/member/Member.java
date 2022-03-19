@@ -16,6 +16,7 @@ public class Member {
 	private String pilpyStartDate= "";
 	private String pilpyEndtDate= "";
 	private String pilmmMemberNumber= "";
+	private String pilmmGenderCd= "";
 	private String pilinName= "";
 	private String pilinSeq= "";
 	private String pilcdName= "";
@@ -24,8 +25,14 @@ public class Member {
 	private String pilpgNumberCd= "";
 	private String pilpgSeq= "";
 	private String pilpgiSeq= "";
-
+	private String pilpgName= "";
+	private String selectListDate= "";
+	private String piljqQuestionCd= "";
+	private String pilcgName= "";
+	private String piljqSeq= "";
 	
+
+
 	
 	public String getPilmmSeq() {
 		return pilmmSeq;
@@ -134,6 +141,42 @@ public class Member {
 	}
 	public void setPilpgiSeq(String pilpgiSeq) {
 		this.pilpgiSeq = pilpgiSeq;
+	}
+	public String getPilpgName() {
+		return pilpgName;
+	}
+	public void setPilpgName(String pilpgName) {
+		this.pilpgName = pilpgName;
+	}
+	public String getSelectListDate() {
+		return selectListDate;
+	}
+	public void setSelectListDate(String selectListDate) {
+		this.selectListDate = selectListDate;
+	}
+	public String getPilmmGenderCd() {
+		return pilmmGenderCd;
+	}
+	public void setPilmmGenderCd(String pilmmGenderCd) {
+		this.pilmmGenderCd = pilmmGenderCd;
+	}
+	public String getPiljqQuestionCd() {
+		return piljqQuestionCd;
+	}
+	public void setPiljqQuestionCd(String piljqQuestionCd) {
+		this.piljqQuestionCd = piljqQuestionCd;
+	}
+	public String getPilcgName() {
+		return pilcgName;
+	}
+	public void setPilcgName(String pilcgName) {
+		this.pilcgName = pilcgName;
+	}
+	public String getPiljqSeq() {
+		return piljqSeq;
+	}
+	public void setPiljqSeq(String piljqSeq) {
+		this.piljqSeq = piljqSeq;
 	}
 	
 	

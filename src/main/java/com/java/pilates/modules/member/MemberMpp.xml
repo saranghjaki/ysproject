@@ -9,9 +9,7 @@
     <resultMap id="resultMapObj" type="com.java.pilates.modules.member.Member"></resultMap>
 
 	<sql id="selectCommon">
-		FROM
-			pilatesMember a
-		WHERE 1=1
+		
 			<choose>
 				<when test="shPilmmDelNy==1">AND pilmmDelNy=1</when>
 				<when test="shPilmmDelNy==0">AND pilmmDelNy=0</when>
@@ -25,41 +23,53 @@
 				SELECT
 				a.pilmmSeq
 				,a.pilmmName 
-				,(SELECT pilcdName FROM PILATESCODE WHERE 1=1 AND pilcgSeq=33 and  pilcdSeq=a.pilmmGenderCd)as pilmmGenderCd 
+				,(SELECT pilcdName FROM PILATESCODE WHERE 1=1 AND pilcgSeq=33 and  pilcdSeq=a.pilmmGenderCd)AS pilmmGenderCd 
 				,a.pilmmDob
 			    ,b.pilmpNumber
+			    ,e.pilpgName
 			    ,c.pilpyStartDate
 			    ,c.pilpyEndtDate
 			    ,a.pilmmMemberNumber
-			    ,(SELECT pilinName FROM  PILATESINSTRUCTOR WHERE 1=1 AND pilinSeq= d.pilinSeq) 
+			   	,(SELECT pilinName FROM  PILATESINSTRUCTOR WHERE 1=1 AND pilinSeq= d.pilinSeq)AS pilinName
 			    ,c. pilpyDregisterDate
-			    ,(SELECT pilcdName FROM PILATESCODE WHERE 1=1 AND pilcgSeq=14 AND  pilcdSeq= e.pilpgNumberCd)
+			    ,(SELECT pilcdName FROM PILATESCODE WHERE 1=1 AND pilcgSeq=12 AND  pilcdSeq= f.piljqQuestionCd)AS piljqQuestionCd
+			   ,f.piljqSeq
 			            FROM PILATESMEMBER as a
 					LEFT JOIN PILATESMEMBERPHONE AS b ON b.pilmmSeq=a.pilmmSeq
 					LEFT JOIN PILATESPAYMENT AS c ON c.pilmmSeq=a.pilmmSeq
 			        LEFT JOIN PILATESPROGRAMINSTRUCTOR AS d ON d.pilpgiSeq=c.pilpgiSeq
 			        LEFT JOIN PILATESPROGRAM AS e ON e.pilpgSeq=d.pilpgSeq
-        	   
-		
+			        LEFT JOIN PILLATESMEMBERJOINQNA AS f ON f.pilmmSeq=a.pilmmSeq
+			        
+       	   <include refid="selectCommon" />
+				<if test="startRnumForMysql != null and !startRnumForMysql.equals('')">	
+				limit #{startRnumForMysql},#{rowNumToShow} </if>
+						
 			
-		</select>
+			
+	</select>
+		
 
+	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT
 			count(*)
+			FROM
+			pilatesMember a
+		WHERE 1=1
 		<include refid="selectCommon" />
 	</select>
 
 	<insert id="insert">
 			insert into pilatesMember (
-				
-				pilmmName
-				,pilmmId
+				pilmmId 
+				,pilmmPassword
+				,pilmmName
 				,pilmmDelNy
 			) values (
-				
-				#{pilmmName}
-				,#{pilmmId}
+				#{pilmmId}
+				,#{pilmmPassword}
+				,#{pilmmName}
 				,0
 			)
 	</insert>

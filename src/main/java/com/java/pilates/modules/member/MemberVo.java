@@ -1,5 +1,12 @@
 package com.java.pilates.modules.member;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+
+
+import javax.xml.crypto.Data;
+
 public class MemberVo {
 	
 	/* list */
@@ -12,16 +19,16 @@ public class MemberVo {
 	private String pilinName = "";
 	private String pilcdName = "";
 	private String pilmmGenderCd = "";
-
+	private String pilcgSeq= "";
 	
-
+	
 	/* member Search */
 	private String shPilmmName = "";
 	private Integer shPilmmDelNy;
 	
 	/* paging */
 	private int thisPage = 1;									// 현재 페이지
-	private int rowNumToShow = 10;								// 화면에 보여줄 데이터 줄 갯수
+	private int rowNumToShow = 11;								// 화면에 보여줄 데이터 줄 갯수
 	private int pageNumToShow = 5;								// 화면에 보여줄 페이징 번호 갯수
 
 	private int totalRows;										// 전체 데이터 갯수
@@ -36,6 +43,18 @@ public class MemberVo {
 	private int startRnumForMysql = 0;							// 쿼리 시작 row
 
 	//-------------------------------//
+	private String selectListDate= "";
+	private String pilpyStartDate= "";
+	private String pilpyEndtDate= "";
+	private String pilcgName= "";
+	
+	
+	
+
+	
+	
+	
+	
 	public void setParamsPaging(int totalRowsParam) {
 		
 		totalRows = totalRowsParam;
@@ -256,6 +275,46 @@ public class MemberVo {
 
 	public void setPilmmGenderCd(String pilmmGenderCd) {
 		this.pilmmGenderCd = pilmmGenderCd;
+	}
+
+	public String getSelectListDate() {
+		return selectListDate;
+	}
+
+	public void setSelectListDate(String selectListDate) {
+		this.selectListDate = selectListDate;
+	}
+
+	public String getPilpyStartDate() {
+		return pilpyStartDate;
+	}
+
+	public void setPilpyStartDate(String pilpyStartDate) {
+		this.pilpyStartDate = pilpyStartDate;
+	}
+
+	public String getPilpyEndtDate() {
+		return pilpyEndtDate;
+	}
+
+	public void setPilpyEndtDate(String pilpyEndtDate) {
+		this.pilpyEndtDate = pilpyEndtDate;
+	}
+
+	public String getPilcgSeq() {
+		return pilcgSeq;
+	}
+
+	public void setPilcgSeq(String pilcgSeq) {
+		this.pilcgSeq = pilcgSeq;
+	}
+
+	public String getPilcgName() {
+		return pilcgName;
+	}
+
+	public void setPilcgName(String pilcgName) {
+		this.pilcgName = pilcgName;
 	}
 	
 

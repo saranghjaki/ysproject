@@ -41,6 +41,8 @@ public class MemberServiceImpl implements MemberService{
 		return dao.update(dto);	
 	}
 
+	
+
 
 	
 	
