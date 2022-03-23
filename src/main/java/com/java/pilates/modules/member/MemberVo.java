@@ -21,11 +21,16 @@ public class MemberVo {
 	private String pilmmGenderCd = "";
 	private String pilcgSeq= "";
 	
+	// common
+	private String shOption;
+	private String shValue;
+	
 	
 	/* member Search */
 	private String shPilmmName = "";
 	private Integer shPilmmDelNy;
-	
+	private String shPilcgSeq;
+	private String seq;
 	/* paging */
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = 11;								// 화면에 보여줄 데이터 줄 갯수
@@ -315,6 +320,38 @@ public class MemberVo {
 
 	public void setPilcgName(String pilcgName) {
 		this.pilcgName = pilcgName;
+	}
+
+	public String getShOption() {
+		return shOption;
+	}
+
+	public void setShOption(String shOption) {
+		this.shOption = shOption;
+	}
+
+	public String getShValue() {
+		return shValue;
+	}
+
+	public void setShValue(String shValue) {
+		this.shValue = shValue;
+	}
+
+	public String getShPilcgSeq() {
+		return shPilcgSeq;
+	}
+
+	public void setShPilcgSeq(String shPilcgSeq) {
+		this.shPilcgSeq = shPilcgSeq;
+	}
+
+	public String getSeq() {
+		return seq;
+	}
+
+	public void setSeq(String seq) {
+		this.seq = seq;
 	}
 	
 

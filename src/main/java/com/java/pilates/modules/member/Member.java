@@ -10,7 +10,7 @@ public class Member {
 	private String pilmmId = "";
 	private String pilmmName= "";
 	private String pilmmPassword= "";
-	private String pilmmDelNy= "";
+	
 	private String pilmmDob= "";
 	private String pilmpNumber= "";
 	private String pilpyStartDate= "";
@@ -30,8 +30,7 @@ public class Member {
 	private String piljqQuestionCd= "";
 	private String pilcgName= "";
 	private String piljqSeq= "";
-	
-
+	private Integer pilmmDelNy;
 
 	
 	public String getPilmmSeq() {
@@ -58,12 +57,7 @@ public class Member {
 	public void setPilmmPassword(String pilmmPassword) {
 		this.pilmmPassword = pilmmPassword;
 	}
-	public String getPilmmDelNy() {
-		return pilmmDelNy;
-	}
-	public void setPilmmDelNy(String pilmmDelNy) {
-		this.pilmmDelNy = pilmmDelNy;
-	}
+	
 	public String getPilmmDob() {
 		return pilmmDob;
 	}
@@ -177,6 +171,12 @@ public class Member {
 	}
 	public void setPiljqSeq(String piljqSeq) {
 		this.piljqSeq = piljqSeq;
+	}
+	public Integer getPilmmDelNy() {
+		return pilmmDelNy;
+	}
+	public void setPilmmDelNy(Integer pilmmDelNy) {
+		this.pilmmDelNy = pilmmDelNy;
 	}
 	
 	

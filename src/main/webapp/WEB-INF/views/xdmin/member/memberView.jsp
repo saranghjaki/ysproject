@@ -582,26 +582,22 @@
 			</div>		
 	</form>
 	
+	<!-- test s-->
 	
-	<!-- test -->
-		<form id="form" method="post" action="/pilates/xdmin/member/memberInst"> 
-	 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
-     <input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>">
-     <input type="hidden" name="shValue" value="<c:out value="${vo.shValue}"/>">  
-     <input type="hidden" name="" >  
+	<a href="/pilates/xdmin/member/memberList?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">목록</a>
+<a href="/pilates/xdmin/member/memberForm2?pilmmSeq=<c:out value="${item.pilmmSeq}"/>&thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">수정</a>
+
+<a href="/pilates/xdmin/member/memberForm2?pilmmSeq=<c:out value="${item.pilmmSeq}"/>"> 수정</a>
+<a  href="/pilates/xdmin/member/memberDele?pilmmSeq=<c:out value="${item.pilmmSeq}"/>&thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>"id="btnDelete" > 삭제(진짜)</a>
+<a href="/ipilates/xdmin/member/memberNele?pilmmSeq=<c:out value="${item.pilmmSeq}"/>&thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>"id="btnDelete1"> 삭제(가짜)</a>
 	
-	<input type="text" name="pilmmName" id= "pilmmName"placeholder="코드그룹">
-	<!-- <input type="text" name="pilcdName" id= "pilcdName"placeholder="코드"> -->
-	<input type="submit" id="btnSubmit" value="제출">
 	
-</form>
-		
-		
+	
 				
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="/pilates/resources/common/js/validation.js"></script> <!-- js위치선정 -->
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
+	<script>
 	$("#btnAdderss").on("click" , function(){
 		
 	 sample6_execDaumPostcode();
@@ -661,16 +657,28 @@
         }).open();
     }
 </script>
-
-
+<!-- test s -->
 <script type="text/javascript">
-
-	$("#btnSubmit").on("click",function(){
-		if(!checkNull($("#pilcgName"),$("#pilcgName").val(),"코드그룹이름을 입력해주세요")) return false;
+	$("#btnDelete").on("click", function(){
+		var answer = confirm("삭제하시겠습니까");
+		if(answer){
 		
 		
-	});
+		}else{
 	
+			return false;
+		}
+	});
+	$("#btnDelete1").on("click", function(){
+		var answer = confirm("가짜삭제하시겠습니까");
+		if(answer){
+		
+		
+		}else{
+	
+			return false;
+		}
+	});
 </script>
 	
   <!-- e -->

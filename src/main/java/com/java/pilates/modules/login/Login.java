@@ -1,6 +1,8 @@
 package com.java.pilates.modules.login;
 
 
+import java.sql.Date;
+
 import com.java.pilates.modules.login.Login;
 
 public class Login {
@@ -9,6 +11,7 @@ public class Login {
 	private String pilmmName= "";
 	private String pilmmPassword= "";
 	private String pilmmDelNy= "";
+	
 	
 	public String getPilmmSeq() {
 		return pilmmSeq;
@@ -40,4 +43,5 @@ public class Login {
 	public void setPilmmDelNy(String pilmmDelNy) {
 		this.pilmmDelNy = pilmmDelNy;
 	}
+
 }

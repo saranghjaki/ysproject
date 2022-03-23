@@ -16,9 +16,12 @@
 				<when test="shPilmmDelNy==1">AND pilmmDelNy=1</when>
 				<when test="shPilmmDelNy==0">AND pilmmDelNy=0</when>
 			</choose>
-		<if test="shPilmmName != null and !shPilmmName.equals('')"> 
-		 AND PilmmName LIKE CONCAT('%',#{shPilmmName},'%')
-		 </if> 
+		<if test="shPilmmName != null and !shPilmmName.equals('')"> </if>
+		 <choose>
+			<when test="shOption == 1">AND a.PilmmName LIKE concat('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND a.PilmmId LIKE concat('%',#{shValue},'%')</when>
+		</choose>
+		
 	</sql>
 	
 	<select id="selectList" resultMap="resultMapObj">
@@ -72,5 +75,7 @@
 				AND  pilmmSeq = #{pilmmSeq}
 	</update> 
 	
+
+
 	
 </mapper>

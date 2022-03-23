@@ -26,7 +26,9 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int insert(Member dto) throws Exception {
 		
-		return dao.insert(dto);
+		dao.insert(dto);
+		
+		return 1;
 	}
 
 	@Override
@@ -40,6 +42,20 @@ public class MemberServiceImpl implements MemberService{
 		
 		return dao.update(dto);	
 	}
+
+	@Override
+	public int updateDelete(MemberVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.updateDelete(vo);
+	}
+
+	@Override
+	public int delete(MemberVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.delete(vo);
+	}
+
+
 
 	
 

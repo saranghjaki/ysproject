@@ -27,4 +27,5 @@ public class LoginDao {
 	public Login selectOne(LoginVo vo) { return sqlSession.selectOne(namespace + ".selectOne", vo);}
 	public int update(Login dto){return sqlSession.update(namespace + ".update", dto);}
 
+
 }

@@ -14,39 +14,42 @@
 				<when test="shPilmmDelNy==1">AND pilmmDelNy=1</when>
 				<when test="shPilmmDelNy==0">AND pilmmDelNy=0</when>
 			</choose>
-		<if test="shPilmmName != null and !shPilmmName.equals('')"> 
-		 AND PilmmName LIKE CONCAT('%',#{shPilmmName},'%')
-		 </if> 
+				<if test="shPilmmName != null and !shPilmmName.equals('')">  AND pilmmName LIKE concat('%', #{shPilmmName}, '%')</if> 
+		 <choose>
+				<when test="shOption == 1">AND a.pilmmName LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND a.pilmmId LIKE CONCAT('%',#{shValue},'%')</when>
+				</choose>
+
 	</sql>
 	
 	<select id="selectList" resultMap="resultMapObj">
 				SELECT
-				a.pilmmSeq
-				,a.pilmmName 
-				,(SELECT pilcdName FROM PILATESCODE WHERE 1=1 AND pilcgSeq=33 and  pilcdSeq=a.pilmmGenderCd)AS pilmmGenderCd 
-				,a.pilmmDob
-			    ,b.pilmpNumber
-			    ,e.pilpgName
-			    ,c.pilpyStartDate
-			    ,c.pilpyEndtDate
-			    ,a.pilmmMemberNumber
-			   	,(SELECT pilinName FROM  PILATESINSTRUCTOR WHERE 1=1 AND pilinSeq= d.pilinSeq)AS pilinName
-			    ,c. pilpyDregisterDate
-			    ,(SELECT pilcdName FROM PILATESCODE WHERE 1=1 AND pilcgSeq=12 AND  pilcdSeq= f.piljqQuestionCd)AS piljqQuestionCd
-			   ,f.piljqSeq
-			            FROM PILATESMEMBER as a
-					LEFT JOIN PILATESMEMBERPHONE AS b ON b.pilmmSeq=a.pilmmSeq
-					LEFT JOIN PILATESPAYMENT AS c ON c.pilmmSeq=a.pilmmSeq
-			        LEFT JOIN PILATESPROGRAMINSTRUCTOR AS d ON d.pilpgiSeq=c.pilpgiSeq
-			        LEFT JOIN PILATESPROGRAM AS e ON e.pilpgSeq=d.pilpgSeq
-			        LEFT JOIN PILLATESMEMBERJOINQNA AS f ON f.pilmmSeq=a.pilmmSeq
-			        
-       	   <include refid="selectCommon" />
-				<if test="startRnumForMysql != null and !startRnumForMysql.equals('')">	
-				limit #{startRnumForMysql},#{rowNumToShow} </if>
-						
-			
-			
+					a.pilmmSeq
+					,a.pilmmName 
+					,(SELECT pilcdName FROM PILATESCODE WHERE 1=1 AND pilcgSeq=33 and  pilcdSeq=a.pilmmGenderCd)AS pilmmGenderCd 
+					,a.pilmmDob
+				    ,b.pilmpNumber
+				    ,e.pilpgName
+				    ,c.pilpyStartDate
+				    ,c.pilpyEndtDate
+				    ,a.pilmmMemberNumber
+				   	,(SELECT pilinName FROM  PILATESINSTRUCTOR WHERE 1=1 AND pilinSeq= d.pilinSeq)AS pilinName
+				    ,c. pilpyDregisterDate
+				    ,(SELECT pilcdName FROM PILATESCODE WHERE 1=1 AND pilcgSeq=12 AND  pilcdSeq= f.piljqQuestionCd)AS piljqQuestionCd
+				   ,f.piljqSeq
+				     
+				            FROM PILATESMEMBER as a
+						LEFT JOIN PILATESMEMBERPHONE AS b ON b.pilmmSeq=a.pilmmSeq
+						LEFT JOIN PILATESPAYMENT AS c ON c.pilmmSeq=a.pilmmSeq
+				        LEFT JOIN PILATESPROGRAMINSTRUCTOR AS d ON d.pilpgiSeq=c.pilpgiSeq
+				        LEFT JOIN PILATESPROGRAM AS e ON e.pilpgSeq=d.pilpgSeq
+				        LEFT JOIN PILLATESMEMBERJOINQNA AS f ON f.pilmmSeq=a.pilmmSeq				      
+       				  WHERE 1=1
+       				  <include refid="selectCommon" />
+       				  AND a.pilmmDelNy = 0
+					ORDER BY pilmmSeq DESC
+						limit #{startRnumForMysql}, #{rowNumToShow}		
+					
 	</select>
 		
 
@@ -54,11 +57,13 @@
 	<select id="selectOneCount" resultType="Integer">
 		SELECT
 			count(*)
-			FROM
-			pilatesMember a
-		WHERE 1=1
+			 	FROM
+				pilatesMember a
+				WHERE 1=1
 		<include refid="selectCommon" />
 	</select>
+	
+		
 
 	<insert id="insert">
 			insert into pilatesMember (
@@ -72,14 +77,18 @@
 				,#{pilmmName}
 				,0
 			)
+			<selectKey resultType="String" keyProperty="pilmmSeq" order="AFTER">
+		SELECT last_insert_id()
+	</selectKey>
 	</insert>
 	<select id="selectOne" resultMap="resultMapObj">
 			SELECT 
-			pilmmSeq
-			, a.pilmmName
-			,a.pilmmDob
+				pilmmSeq
+				, a.pilmmName
+				,a.pilmmDob
 			
-		FROM nct.pilatesmember a
+		FROM
+			 nct.pilatesmember a
 		WHERE 1=1
 			AND pilmmSeq = #{pilmmSeq}
 	</select>
@@ -94,6 +103,25 @@
 			WHERE 1=1
 				AND  pilmmSeq = #{pilmmSeq}
 	</update> 
+	
+		<update id="updateDelete">
+		UPDATE 
+			PILATESMEMBER 
+		SET 	
+			pilmmDelNy = 1
+		WHERE 1=1
+			AND pilmmSeq =#{pilmmSeq }
+
+	</update>
+	<delete id="delete">
+		DELETE 
+			FROM
+			PILATESMEMBER  
+	
+		WHERE 1=1
+			AND pilmmSeq =#{pilmmSeq }
+
+	</delete>
 	
 	
 </mapper>

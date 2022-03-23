@@ -181,7 +181,7 @@
 					</div>
 				</div>
 			</div> -->
-			
+		<form id="" name="" method="get" action="/pilates/xdmin/member/memberList">
 			<div class="accordion" id="accordionExample">
 			  <div class="accordion-item">
 			    <h2 class="accordion-header" id="headingOne">
@@ -243,8 +243,11 @@
 							<div class="row  row-cols-1 row-cols-md-4">
 							<div class ="col col-sm-12  col-md-3 ">	
 								<div class="input-group mb-2">
-								<select  class=" form-select dropdown-toggle" "  data-toggle="dropdown" >
+								<select  name="shPilmmDelNy" id="shPilmmDelNy" class=" form-select dropdown-toggle" "  data-toggle="dropdown" >
 									<div class=" dropdown-menu  " aria-labelledby="dropdownmenu">
+								     	<option value="">::삭제여부::
+										<option value="1"<c:if test="${vo.shPilmmDelNy eq 1 }">selected</c:if>>::Y::
+										<option value="0"<c:if test="${vo.shPilmmDelNy eq 0 }">selected</c:if>>::N::</option>
 								     	<option value="1" selected>회원명</option> 
 								  	 	<option value="2">담담자</p></option>
 									 	<option value="3">카드번호</option>
@@ -254,11 +257,19 @@
 								   </select> 
 							 	</div>
 							</div>
+							<select name="shOption" id="shOption">
+	<option value="">::검색구분::
+	<option value="1"<c:if test="${vo.shOption eq 1 }">selected</c:if>>::이름::
+	<option value="2"<c:if test="${vo.shOption eq 2 }">selected</c:if>>::아이디::
+</select>
+						 <input type="text" name="shPilmmName" id="shPilmmName" value="<c:out value ="${vo.shPilmmName }"/>">
+							
 								<div class ="col col-sm-6  col-md-3 ">	
-						  			<input  type="text" class=" form-control" aria-label="Text input with dropdown button">
+						  			 <input class=" form-control"  type="text" name="shValue"id= "shValue" value="<c:out value = "${vo.shValue }"/>">
+						  			 <input  type="text" class=" form-control" aria-label="Text input with dropdown button">
 								</div>
 								<div class="col-sm-6 col-md-3">
-									  <button class="btn btn-outline-secondary" type="button">검색</button>
+									  <button class="btn btn-outline-secondary"  type="submit" id="btnSubmit"  name="search">검색</button>
 								</div>
 							</div>
 						</div>
@@ -266,10 +277,7 @@
 	     	   </div>
 	    	</div>
 	   	 </div>
-	  </div>
-			
-			
-			
+
 			
 			
 		
@@ -308,8 +316,8 @@
 				<th>시작일</th>
 				<th>만료일</th>
 				<th>잔여</th>
-				<th>카드번호</th>
 				<th>담당자</th>
+				<th>카드번호</th>
 				<th>가입일</th>
 				<th>등록횟수</th>
 				<th>잔여횟수</th>
@@ -317,12 +325,14 @@
 		</thead>
 			<tr>
 			<!-- meber list s -->
-			<form id="" name="" method="get" action="/infra/member/memberList">
 				<c:forEach items="${list}" var="item" varStatus="status">	
 				<td><c:out value="${item.pilmmSeq}"/> </td>
 				<td><div class="form-check">
 				    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></td>
-				<td><c:out value="${item.pilmmName}"/></td>
+				<td>
+				 <a href="/pilates/xdmin/member/memberView?pilmmSeq=<c:out value="${item.pilmmSeq}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">
+				<c:out value="${item.pilmmName}"/></a> 
+				</td>
 				<td><c:out value="${item.pilmmGenderCd}"/></td>
 				<td><c:out value="${item.pilmmDob}"/></td>
 				<td><c:out value="${item.pilmpNumber}"/></td>
@@ -342,6 +352,48 @@
 					</form>
 						</table>
 	</div>
+	</form>
+	
+	
+	
+	
+	<form id="" name="" method="get" action="/pilates/xdmin/member/memberList">
+<select name="shPilmmDelNy" id="shPilmmDelNy">
+	<option value="">::삭제여부::
+	<option value="1"<c:if test="${vo.shPilmmDelNy eq 1 }">selected</c:if>>::Y::
+	<option value="0"<c:if test="${vo.shPilmmDelNy eq 0 }">selected</c:if>>::N::</option>
+</select>
+ <select name="shOption" id="shOption">
+	<option value="">::검색구분::
+	<option value="1"<c:if test="${vo.shOption eq 1 }">selected</c:if>>::이름::
+	<option value="2"<c:if test="${vo.shOption eq 2 }">selected</c:if>>::아이디::
+</select>
+	회원이름: <input type="text" name="shPilmmName" id="shPilmmName" value="<c:out value ="${vo.shPilmmName }"/>">
+
+ <input type="submit" id="btnSubmit"  name="search">
+ <br>
+
+
+<c:choose>
+	<c:when test="${fn:length(list) eq 0}">
+		<tr>
+			<td class="text-center" colspan="9">There is no data!</td>
+		</tr>	
+	</c:when>
+	<c:otherwise>
+		<c:forEach items="${list}" var="item" varStatus="status">	
+		
+		<c:out value="${item.pilmmSeq}"/> 
+		<a href="/pilates/xdmin/member/memberView?pilmmSeq=<c:out value="${item.pilmmSeq}"/>">
+		<c:out value="${item.pilmmName}"/></a>
+		| <c:out value="${item.pilmmId}"/> <br>
+	
+		</c:forEach>
+	</c:otherwise>
+</c:choose>	 
+</form>
+
+	
 
 
 

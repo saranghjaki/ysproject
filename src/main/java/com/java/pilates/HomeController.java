@@ -35,4 +35,10 @@ public class HomeController {
 		
 		return "home";
 		}
+	@RequestMapping(value = "/sampleKakaoMap", method = RequestMethod.GET)
+	public String sampleKakaoMap() {
+		
+		
+		return "test/map";
+	}
 	}

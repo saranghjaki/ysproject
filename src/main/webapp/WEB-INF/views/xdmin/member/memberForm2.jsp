@@ -581,22 +581,6 @@
 
 			</div>		
 	</form>
-	
-	
-	<!-- test -->
-		<form id="form" method="post" action="/pilates/xdmin/member/memberInst"> 
-	 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
-     <input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>">
-     <input type="hidden" name="shValue" value="<c:out value="${vo.shValue}"/>">  
-     <input type="hidden" name="" >  
-	
-	<input type="text" name="pilmmName" id= "pilmmName"placeholder="코드그룹">
-	<!-- <input type="text" name="pilcdName" id= "pilcdName"placeholder="코드"> -->
-	<input type="submit" id="btnSubmit" value="제출">
-	
-</form>
-		
-		
 				
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="/pilates/resources/common/js/validation.js"></script> <!-- js위치선정 -->
@@ -662,16 +646,19 @@
     }
 </script>
 
-
-<script type="text/javascript">
-
-	$("#btnSubmit").on("click",function(){
-		if(!checkNull($("#pilcgName"),$("#pilcgName").val(),"코드그룹이름을 입력해주세요")) return false;
-		
-		
-	});
+<!-- test -->
+<form method="post" action="/pilates/xdmin/member/memberUpdt"> 
+	 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+     <input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>">
+     <input type="hidden" name="shValue" value="<c:out value="${vo.shValue}"/>">  
+     <input type="hidden" name="" >  
+	<input type="hidden" name="pilmmSeq" value="<c:out value="${item.pilmmSeq}"/>">
+	<input type="text" name="pilmmName" placeholder="이름" value="<c:out value="${item.pilmmName}"/>">
+	<input type="submit" value="제출">
 	
-</script>
+</form>
+
+
 	
   <!-- e -->
 
