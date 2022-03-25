@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.java.pilates.modules.code.CodeServiceImpl;
+
+
+
 
 
 
@@ -43,14 +47,18 @@ public class MemberController {
 	
 	@RequestMapping(value = "/xdmin/member/memberForm")
 	public String memberForm(@ModelAttribute("vo")MemberVo vo, Model model) throws Exception {
-		
-		//List<Member> listMember = service.selectList(vo);
-		
-		//model.addAttribute("listMember", listMember);
+		if(vo.getPilmmSeq().equals("0")) {
+			
+		}else {
+			Member item = service.selectOne(vo);
+			model.addAttribute("item",item);
+		}
+		model.addAttribute("codeGender",CodeServiceImpl.selectListForCache("33"));
 		
 		
 		return "xdmin/member/memberForm";
 	}
+	@SuppressWarnings(value= {"all"})
 	@RequestMapping(value = "/xdmin/member/memberInst")
 		public String memberInst(MemberVo vo,Member dto,RedirectAttributes redirectAttributes) throws Exception {
 	

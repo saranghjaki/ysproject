@@ -285,7 +285,7 @@
 					<td>
 						<div class="container g-0">
   							<div class="row  row-cols-1 row-cols-md-2">
-								<div class ="col col-sm-12  col-md-6 ">	
+								<div class ="col col-sm-12  col-md-6 ">	 
 									<div class="input-group mb-2">
 											<select  class=" form-select dropdown-toggle"  "data-toggle="dropdown" >
 												<div class=" dropdown-menu "  aria-labelledby="dropdownmenu">
@@ -584,6 +584,12 @@
 	
 	
 	<!-- test -->
+	<select name=" pilmmGenderCd">
+	<option value="">::성별::</option>
+		<c:forEach items="${codeGender}" var="itemGender" varStatus="statusGender">
+	<option value="<c:out value="${itemGender.pilcdSeq}"/>"<c:if test="${itemGender.pilmmSeq eq itemGender.pilcdSeq}">selected</c:if>> <c:out value="${itemGender.pilcdName}"></c:out></option>
+		</c:forEach>	
+</select>
 		<form id="form" method="post" action="/pilates/xdmin/member/memberInst"> 
 	 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
      <input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>">
