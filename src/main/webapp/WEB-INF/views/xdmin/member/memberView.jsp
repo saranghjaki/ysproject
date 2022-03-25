@@ -162,7 +162,11 @@
 
 <!-- member form s-->
 
-	<form id="form" method="post" action="/pilates/xdmin/member/memberInst"> 
+	<form id=goForm " method="post" action="/pilates/xdmin/member/memberInst"> 
+	 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+     <input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>">
+     <input type="hidden" name="shValue" value="<c:out value="${vo.shValue}"/>">  
+     <input type="hidden" name="" >  
 		<div class="container ">
 			<table class="table table-bordered table-lg ">
 				<colgroup>
@@ -177,64 +181,31 @@
 					<td>
 						<div class="input-group mb-3 ">
 							<div class="col-sm-7 col-md-8">
-								<input class="form-control form-control-sm" type="text" name="pilmmId" id= "pilmmId">
-								</div>
-							<div class="col-sm-5 col-md-4">
-								<button class="btn btn-outline-secondary"  type="button" id="button-addon2">중복확인</button>
+							<p class= " align-middle fs-4 text-start">	<c:out value="${item.pilmmId}"/> </p>
+							</div>
+							
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td>
-						<div class="input-group mb-3 ">
-							<div class="col-sm-7 col-md-8">
-								<input class="form-control form-control-sm" type="password" name="pilmmPassword" id= "pilmmPassword"  >
-							</div>
-						</div>	
-					</td>
-				</tr>
-				<tr>
-					<td>비밀번호 확인</td>
-					<td>
-						<div class="input-group mb-3 ">
-							<div class="col-sm-7 col-md-8">
-								<input class="form-control form-control-sm" type="password" name="pilmmPassword" id= "pilmmPasswordCon"  >
-							</div>
-						</div>	
-					</td>
+			
+
 				</tr>
 				<tr>
 					<td>비밀번호 질문</td>
 					<td>
-							<div class="input-group mb-3">
-								<select name="pilcgSeq" class=" form-select dropdown-toggle"  "data-toggle="dropdown" >
-									<div class=" dropdown-menu  col-sm-12 col-md-12 " aria-labelledby="dropdownmenu">
-								     <c:forEach items="${list}" var="item"   varStatus="status">	
-								      <a href="//pilates/xdmin/member/membeList?pilcgSeq=<c:out value="${item.pilcgSeq}"/>">
-								     <option value="<c:out value="${item.pilcgSeq}"/>"> <c:out value="${item.pilcdName}"/></option>
-										</c:forEach>
-								     	
-									 </div> 
-								 </div>
-							</select> 
-							<select name="pilcgSeq">
-
-						<option value="${item.piljqSeq}">::코드그룹::</option>
-						<c:forEach items="${listMember}" var="item" varStatus="status">			
-							<option value="<c:out value="${item.piljqSeq}"/>"><c:out value="${item.piljqSeq}"/> | <c:out value="${item.piljqQuestionCd}"/></option>
-								</c:forEach>	
-						</select>
-	
-					
+						<div class="input-group mb-3 ">
+							<div class="col-sm-7 col-md-8">
+								<p class= " align-middle fs-4 text-start">	<c:out value="${item.piljqQuestionCd}"/> </p>
+							</div>
+						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>비밀번호 답변</td>
 					<td>
 						<div class="input-group mb-3 ">
-							<div class="col-sm-12 col-md-12">
-								<input class="form-control form-control-sm"  type="text">
+							<div class="col-sm-7 col-md-8">
+								<p class= " align-middle fs-4 text-start">	<c:out value="${item.piljqAnswer}"/> </p>
 							</div>
 						</div>
 					</td>
@@ -244,7 +215,7 @@
 					<td>
 						<div class="input-group mb-3 ">
 							<div class="col-sm-7 col-md-8">
-								<input class="form-control form-control-sm" type="text"  type="text" name="pilmmName" id= "pilmmName">
+								<p class= " align-middle fs-4 text-start">	<c:out value="${item.pilmmName}"/> </p>
 							</div>
 						</div>
 					</td>
@@ -254,30 +225,28 @@
 					<td>
 						<div class="input-group mb-3 ">
 							<div class="col-sm-7 col-md-8">
-							<input class=" form-control form-control-sm" type="text" id="sample6_postcode" placeholder="우편번호">
-								</div>
-							<!-- Button trigger modal -->
-							<div class=" col-sm-5 col-md-4">
-							<div class="input-group input-group-sm">
-								<input class="btn btn-outline-secondary"  type="button" id="btnAdderss"  value="우편번호 찾기"><br>
-								<button class="btn btn-outline-secondary" type="button" id="btnAdderssClear">x</button>
+								<p class= " align-middle fs-4 text-start">	<c:out value="${item.pilmaZipcode}"/> </p>
 							</div>
-							</div>
-				
-								
-						</div>	
+						</div>
 					</td>
 				</tr>
 				
 				<tr>
 					<td>
-						<input class="form-control form-control-sm"  id="sample6_address" placeholder="주소" type="text">
+						<div class="input-group mb-3 ">
+							<div class="col-sm-7 col-md-8">
+								<p class= " align-middle fs-4 text-start">	<c:out value="${item.pilmaAddress1}"/> </p>
+							</div>
+						</div>
 					</td>
 				</tr>	
 				<tr>
 					<td>
-						<input class="form-control form-control-sm"   id="sample6_detailAddress" placeholder="상세주소" type="text">
-						<input class="form-control form-control-sm"   id="sample6_extraAddress" placeholder="참고항목"type="text">
+						<div class="input-group mb-3 ">
+							<div class="col-sm-7 col-md-8">
+								<p class= " align-middle fs-4 text-start">	<c:out value="${item.pilmaAddress2}"/> </p>
+							</div>
+						</div>
 					</td>
 				</tr>
 				<tr>
@@ -287,70 +256,36 @@
   							<div class="row  row-cols-1 row-cols-md-2">
 								<div class ="col col-sm-12  col-md-6 ">	
 									<div class="input-group mb-2">
-											<select  class=" form-select dropdown-toggle"  "data-toggle="dropdown" >
-												<div class=" dropdown-menu "  aria-labelledby="dropdownmenu">
-											     	<option value="1" selected>02</option> 
-												 	<option value="2">031</p></option>
-												 	<option value="3">032</option>
-												 	<option value="4">033</option>
-												 	<option value="5">041</option>
-												 	<option value="6">042</option>
-												 	<option value="7">042</option>
-												 	<option value="8">043</option>
-												 	<option value="9">051</option>
-												 	<option value="10">052</option>
-												 	<option value="11">053</option>
-												 	<option value="12">054</option>
-												 	<option value="13">055</option>
-												 	<option value="14">061</option>
-												 	<option value="15">062</option>
-												 	<option value="16">062</option>
-												 	<option value="17">063</option>
-												 	<option value="18">064</option>
-												 	<option value="19">직접입력</option>
-												 </div> 
-											 </div>
-										 </select> 
-									</div> 
+										<select class=" form-select dropdown-toggle"  "data-toggle="dropdown"  name=" pilatesmemberphoneCd" id="pilatesmemberphoneCd">
+										<div class=" dropdown-menu "  aria-labelledby="dropdownmenu">
+										<option value="">::전화번호::</option>
+											<c:forEach items="${codeNumber}" var="itemNumber" varStatus="statusNumber">
+												<option value="<c:out value="${itemNumber.pilcdSeq}"/>"<c:if test="${itemNumber.pilmmSeq eq itemNumber.pilcdSeq}">selected</c:if>> <c:out value="${itemNumber.pilcdName}"></c:out></option>
+												</c:forEach>	
+												</div>
+											</select>
+										</div> 
 								<div class ="col col-sm-12  col-md-6 ">	
-								  	<input type="text" class="  form-control" aria-label="Text input with dropdown button">
+								  
+								  	<p class= " align-middle fs-4 text-start">	<c:out value="${item.pilmpTypeCd}"/>||
+								  	 	<c:out value="${item.pilmpDeviceCd}"/>||
+								  	 	<c:out value="${item.pilmpTelecomCd}"/> ||
+										<c:out value="${item. pilatesmemberphoneCd}"/> ||
+								 	<c:out value="${item.pilmpNumber}"/> </p>
 								</div>
 							</div>
 						</div>	
 					</td>
 				</tr>
-				<tr>
-					<td>휴대전화</td>
-					<td>
-						<div class="container g-0">
-  							<div class="row  row-cols-1 row-cols-md-2">
-								<div class ="col col-sm-12  col-md-6 ">	
-									<div class="input-group mb-2">
-									<select  class=" form-select dropdown-toggle" "  data-toggle="dropdown" >
-										<div class=" dropdown-menu  " aria-labelledby="dropdownmenu">
-									     	<option value="1" selected>010</option> 
-										 	<option value="2">011</p></option>
-										 	<option value="3">016</option>
-										 	<option value="4">017</option>
-										 	<option value="5">018</option>
-										 	<option value="6">019</option>
-									   </div> 
-									   </select> 
-								 	</div>
-								</div>
-							
-								<div class ="col col-sm-12  col-md-6 ">	
-							  		<input  type="email" class=" form-control" aria-label="Text input with dropdown button">
-								</div>
-							</div>
-						</div>
-					</td>
-				</tr>
+				
 				<tr>
 					<td>이메일</td>
-					<td>
-						<input class="form-control form-control-sm" type="text">
-					</td>
+						<td>
+						<div class="input-group mb-3 ">
+							<div class="col-sm-7 col-md-8">
+								<p class= " align-middle fs-4 text-start">	<c:out value="${item.pilmaoUrl}"/> </p>
+							</div>
+						</div></td>
 				</tr>
 			</table>
 		</div>
@@ -361,180 +296,16 @@
 					<col width="75%"/>
 				</colgroup>	
 				<tr class="table-light ">
-					<th colspan="2">주소</th>
+					<th colspan="2">생년월일</th>
 				</tr>
 				<tr>
 					<td>생년월일 </td>
-					<td>
-				<div class="container g-0">
-  					<div class="row  row-cols-1 row-cols-md-3">
-						<div class ="col col-sm-12  col-md-6 ">	
-							<input class="form-control col-sm-4" list="datalistOptions" id="exampleDataList" placeholder="생년입력">
-								<datalist id="datalistOptions">
-								  <option value="1920">
-								  <option value="1921">
-								  <option value="1922">
-								  <option value="1923">
-								  <option value="1924">
-								  <option value="1925">
-								  <option value="1926">
-								  <option value="1927">
-								  <option value="1928">
-								  <option value="1929">
-								  <option value="1930">
-								  <option value="1930">
-								  <option value="1931">
-								  <option value="1932">
-								  <option value="1933">
-								  <option value="1934">
-								  <option value="1935">
-								  <option value="1936">
-								  <option value="1937">
-								  <option value="1938">
-								  <option value="1939">
-								  <option value="1940">
-								  <option value="1941">
-								  <option value="1942">
-								  <option value="1943">
-								  <option value="1944">
-								  <option value="1945">
-								  <option value="1946">
-								  <option value="1947">
-								  <option value="1948">
-								  <option value="1949">
-								  <option value="1950">
-								  <option value="1951">
-								  <option value="1952">
-								  <option value="1953">
-								  <option value="1954">
-								  <option value="1955">
-								  <option value="1956">
-								  <option value="1957">
-								  <option value="1958">
-								  <option value="1959">
-								  <option value="1960">
-								  <option value="1961">
-								  <option value="1962">
-								  <option value="1963">
-								  <option value="1964">
-								  <option value="1965">
-								  <option value="1966">
-								  <option value="1967">
-								  <option value="1968">
-								  <option value="1969">
-								  <option value="1970">
-								  <option value="1971">
-								  <option value="1972">
-								  <option value="1973">
-								  <option value="1974">
-								  <option value="1975">
-								  <option value="1976">
-								  <option value="1977">
-								  <option value="1978">
-								  <option value="1979">
-								  <option value="1980">
-								  <option value="1981">
-								  <option value="1982">
-								  <option value="1983">
-								  <option value="1984">
-								  <option value="1985">
-								  <option value="1986">
-								  <option value="1987">
-								  <option value="1988">
-								  <option value="1989">
-								  <option value="1990">
-								  <option value="1991">
-								  <option value="1992">
-								  <option value="1993">
-								  <option value="1994">
-								  <option value="1995">
-								  <option value="1996">
-								  <option value="1997">
-								  <option value="1998">
-								  <option value="1999">
-								  <option value="2000">
-								  <option value="2001">
-								  <option value="2002">
-								  <option value="2003">
-								  <option value="2004">
-								  <option value="2005">
-								  <option value="2006">
-								  <option value="2007">
-								  <option value="2008">
-								  <option value="2009">
-								  <option value="2010">
-								  <option value="2011">
-								  <option value="2012">
-								  <option value="2013">
-								  <option value="2014">
-								  <option value="2015">
-								  <option value="2016">
-								  <option value="2017">
-								  <option value="2018">
-								  <option value="2019">
-								  <option value="2020">
-								  <option value="2021">
-								  <option value="2022">
-								</datalist>
+							<td><div class="input-group mb-3 ">
+							<div class="col-sm-7 col-md-8">
+								<p class= " align-middle fs-4 text-start">	<c:out value="${item.pilmaoUrl}"/> </p>
+								</div>
 							</div>
-							
-					
-						<div class ="col col-sm-12 col col-md-3">
-							<select class=" form-select dropdown-toggle" "  data-toggle="dropdown" >
-								<div class=" dropdown-menu   " aria-labelledby="dropdownmenu">
-							     	<option value="1" selected>01</option> 
-								 	<option value="2">02</p></option>
-								 	<option value="3">03</option>
-								 	<option value="4">04</option>
-								 	<option value="5">05</option>
-								 	<option value="6">06</option>
-								 	<option value="7">07</option>
-								 	<option value="8">08</option>
-								 	<option value="9">09</option>
-								 	<option value="10">10</option>
-								 	<option value="11">11</option>
-								 	<option value="12">12</option>
-								 </div> 
-								</select>
-							</div>	 
-						<div class ="col col-sm-12 col col-md-3 ">
-							<select class=" form-select dropdown-toggle" "  data-toggle="dropdown" >
-								<div class=" dropdown-menu    " aria-labelledby="dropdownmenu">
-							     	<option value="1" selected>01</option> 
-								 	<option value="2">02</p></option>
-								 	<option value="3">03</option>
-								 	<option value="4">04</option>
-								 	<option value="5">05</option>
-								 	<option value="6">06</option>
-								 	<option value="7">07</option>
-								 	<option value="8">08</option>
-								 	<option value="9">09</option>
-								 	<option value="10">10</option>
-								 	<option value="11">11</option>
-								 	<option value="12">12</option>
-								 	<option value="13">13</option>
-								 	<option value="14">14</option>
-								 	<option value="15">15</option>
-								 	<option value="16">16</option>
-								 	<option value="17">17</option>
-								 	<option value="18">18</option>
-								 	<option value="19">19</option>
-								 	<option value="20">20</option>
-								 	<option value="21">21</option>
-								 	<option value="22">22</option>
-								 	<option value="23">23</option>
-								 	<option value="24">24</option>
-								 	<option value="25">25</option>
-								 	<option value="26">26</option>
-								 	<option value="27">27</option>
-								 	<option value="28">28</option>
-								 	<option value="29">29</option>
-								 	<option value="30">30</option>
-								 	<option value="31">31</option>
-								 </div> 
-							</select> 
-					 		</div>
-						</div>
+						 </div> 							
 					</div> 
 					</td>
 				<tr>
@@ -549,12 +320,21 @@
 		<div class="row  row-cols-1 row-cols-md-3  justify-content-center">
 			<div class ="col col-sm-10  col-md-4 ">	
 				 <div class="d-grid gap-5">
- 					<a type="button" class="btn btn-primary" data-bs-toggle="modal"
+ 					<a  type="button" class="btn btn-primary" data-bs-toggle="modal"
 					role="button" data-bs-target="#list"> 목록 </a> <a type="button"></a>
 				</div>
 			</div>
 		</div>	
 		
+		<div class="container justify-content-center ">
+		<div class="row  row-cols-1 row-cols-md-3  justify-content-center">
+			<div class ="col col-sm-10  col-md-4 ">	
+				 <div class="d-grid gap-5">
+ 					<a type="button" class="btn btn-primary" data-bs-toggle="modal"
+					role="button" data-bs-target="#list"> 목록 </a> <a type="button"></a>
+				</div>
+			</div>
+		</div>	
 			<!-- Modal -->
 			<div class="modal fade" id="list" tabindex="-1" aria-hidden="true">
 				<div class="modal-dialog">
@@ -567,7 +347,7 @@
 						<div class="modal-body">회원관리 리스트로 이동하시겠습니까? 확인 클릭 시 회원관리 페이지로
 							이동합니다</div>
 						<div class="modal-footer">
-							<a type="button" class="btn btn-primary" href="./memberlist.html">확인</a>
+							<a type="button" class="btn btn-primary" href="/pilates/xdmin/member/memberList?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">확인</a>
 							<button type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal">닫기</button>
 	
@@ -584,7 +364,7 @@
 	
 	<!-- test s-->
 	
-	<a href="/pilates/xdmin/member/memberList?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">목록</a>
+<a href="/pilates/xdmin/member/memberList?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">목록</a>
 <a href="/pilates/xdmin/member/memberForm2?pilmmSeq=<c:out value="${item.pilmmSeq}"/>&thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">수정</a>
 
 <a href="/pilates/xdmin/member/memberForm2?pilmmSeq=<c:out value="${item.pilmmSeq}"/>"> 수정</a>
@@ -679,6 +459,22 @@
 			return false;
 		}
 	});
+	
+	goList = function(seq){
+		alert(seq);
+		//form 객체를 가져온다
+		$("#thisPage").val(seq);
+		$("#formList").submit();
+		//가져온 객체를 전달한다
+	}
+	
+	goForm = function(seq){
+		alert(seq);
+		$("#pilmmSeq").val(seq);
+		$("#formList").attr("action","/pilates/xdmin/member/memberList");
+		$("#formList").submit();
+	}
+	
 </script>
 	
   <!-- e -->

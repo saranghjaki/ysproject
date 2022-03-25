@@ -21,6 +21,7 @@ public class MemberVo {
 	private String pilmmGenderCd = "";
 	private String pilcgSeq= "";
 	
+	
 	// common
 	private String shOption;
 	private String shValue;

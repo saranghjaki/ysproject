@@ -41,6 +41,7 @@ public class MemberController {
 			
 			}
 			model.addAttribute("codeGender",CodeServiceImpl.selectListForCache("33"));
+			model.addAttribute("codeNumber",CodeServiceImpl.selectListForCache("35"));
 			//model.addAttribute("vo",vo); 
 		return "xdmin/member/memberList";
 	}
@@ -86,7 +87,7 @@ public class MemberController {
 		Member rt= service.selectOne(vo);
 		
 		model.addAttribute("item", rt);
-		
+		model.addAttribute("codeNumber",CodeServiceImpl.selectListForCache("35"));
 		return "xdmin/member/memberView";
 	}
 	@RequestMapping(value = "/xdmin/member/memberForm2")
@@ -132,7 +133,7 @@ public class MemberController {
 		redirectAttributes.addAttribute("shOption",vo.getShOption());//get
 		redirectAttributes.addAttribute("shValue",vo.getShValue());//get
 		
-		return "redirect:/code/codeGroupList/";
+		return "redirect:/xdmin/member/memberList/";
 		
 	}
 }

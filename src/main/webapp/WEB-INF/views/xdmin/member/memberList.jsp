@@ -188,7 +188,7 @@
 			  <div class="accordion-item">
 			    <h2 class="accordion-header" id="headingOne">
 			      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-			       기간검색
+			       회원검색
 			      </button>
 			    </h2>
 				    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -203,33 +203,19 @@
 										<option value="1"<c:if test="${vo.shOption eq 1 }">selected</c:if>>::이름::
 										<option value="2"<c:if test="${vo.shOption eq 2 }">selected</c:if>>::아이디::
 										<option value="3"<c:if test="${vo.shOption eq 3 }">selected</c:if>>::전화번호::
-										<option value="2"<c:if test="${vo.shOption eq 4 }">selected</c:if>>::::
-										<option value="2"<c:if test="${vo.shOption eq 5 }">selected</c:if>>::아이디::
+										<option value="4"<c:if test="${vo.shOption eq 4 }">selected</c:if>>::카드번호::
+										
 									   </div> 
 								   </select> 
 							 	</div>
 							</div>
-							<div class ="col col-sm-6  col-md-3 ">	
-						  		<input  type="date" class=" form-control" aria-label="Text input with dropdown button">
-							</div>
-							<div class ="col col-sm-6  col-md-3 ">	
-						  		<input  type="date" class=" form-control" aria-label="Text input with dropdown button">
-							</div>
-							<div class="col-sm-6 col-md-3">
-								<div class="input-group">
-								<select name="shPilcgSeq">
-								
-								
-								  <select class="form-select"  class="form-select"  name=" pilmmGenderCd">
-								    		<select name=" pilmmGenderCd">
-											<option value="">::성별::</option>
-												<c:forEach items="${codeGender}" var="itemGender" varStatus="statusGender">
-											<option value="<c:out value="${itemGender.pilcdSeq}"/>"<c:if test="${itemGender.pilmmSeq eq itemGender.pilcdSeq}">selected</c:if>> <c:out value="${itemGender.pilcdName}"></c:out></option>
-												</c:forEach>	
+								<div class="col-sm-6 col-md-3">
+									<div class="input-group">															
 									<input  type="text" class=" form-control" name="shValue"id= "shValue" value="<c:out value = "${vo.shValue }"/>">
 								  <button class="btn btn-outline-secondary"type="submit" id="btnSubmit"  name="search">검색</button>
 								</div>
 							</div>
+
 						</div>
 					</div>
 			      </div>
@@ -238,7 +224,7 @@
 			  <div class="accordion-item">
 			    <h2 class="accordion-header" id="headingTwo">
 			      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-			        일반검색
+			        프로그램 검색
 			      </button>
 			    </h2>
 				    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -247,13 +233,15 @@
 							<div class="row  row-cols-1 row-cols-md-4">
 							<div class ="col col-sm-12  col-md-3 ">	
 								<div class="input-group mb-2">
-								<select  class=" form-select dropdown-toggle" "  data-toggle="dropdown" >
+								<select  name=" pilmmGenderCd" id="pilmmGenderCd" class=" form-select dropdown-toggle" "  data-toggle="dropdown" >
 									<div class=" dropdown-menu  " aria-labelledby="dropdownmenu">
-								     	<option value="1" selected>회원명</option> 
-								  	 	<option value="2">담담자</p></option>
-									 	<option value="3">카드번호</option>
-									 	<option value="4">잔여횟수</option>
-									 	<option value="5">성별</option>
+								     		
+											<option value="">::성별::</option>
+												<c:forEach items="${codeGender}" var="itemGender" varStatus="statusGender">
+													<option value="<c:out value="${itemGender.pilcdSeq}"/>"<c:if test="${itemGender.pilmmSeq eq itemGender.pilcdSeq}">selected</c:if>> <c:out value="${itemGender.pilcdName}"></c:out></option>
+												</c:forEach>	
+												
+											</select>
 									   </div> 
 								   </select> 
 							 	</div>
@@ -264,7 +252,7 @@
 						  			<input  type="text" class=" form-control" aria-label="Text input with dropdown button">
 								</div>
 								<div class="col-sm-6 col-md-3">
-									  <button class="btn btn-outline-secondary" type="button">검색</button>
+									  <button class="btn btn-outline-secondary"type="submit" id="btnSubmit"  name="search">검색</button>
 								</div>
 							</div>
 						</div>

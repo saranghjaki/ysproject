@@ -1,16 +1,28 @@
 package com.java.pilates.modules.member;
 
+import java.util.ArrayList;
+import java.util.List;
 
-
+import com.java.pilates.modules.code.Code;
 
 public class Member {
 	
+	public static  List<Member> cachedMemberArrayList = new ArrayList<Member>();
 	/* list */
 	private String pilmmSeq = "";
 	private String pilmmId = "";
 	private String pilmmName= "";
 	private String pilmmPassword= "";
-	
+	private String piljqQuestionCd= "";
+	private String pilmpTypeCd= "";
+	private String pilmpDeviceCd= "";
+	private String pilmpTelecomCd= "";
+	private String pilmaoUrl= "";
+	private String piljqAnswer= "";
+	private String pilmaAddress2= "";
+	private String pilmaAddress1= "";
+	private String pilmaZipcode = "";
+	private String pilatesmemberphoneCd = "";
 	private String pilmmDob= "";
 	private String pilmpNumber= "";
 	private String pilpyStartDate= "";
@@ -27,7 +39,6 @@ public class Member {
 	private String pilpgiSeq= "";
 	private String pilpgName= "";
 	private String selectListDate= "";
-	private String piljqQuestionCd= "";
 	private String pilcgName= "";
 	private String piljqSeq= "";
 	private Integer pilmmDelNy;
@@ -177,6 +188,66 @@ public class Member {
 	}
 	public void setPilmmDelNy(Integer pilmmDelNy) {
 		this.pilmmDelNy = pilmmDelNy;
+	}
+	public static List<Member> getCachedMemberArrayList() {
+		return cachedMemberArrayList;
+	}
+	public static void setCachedMemberArrayList(List<Member> cachedMemberArrayList) {
+		Member.cachedMemberArrayList = cachedMemberArrayList;
+	}
+	public String getPilmpTypeCd() {
+		return pilmpTypeCd;
+	}
+	public void setPilmpTypeCd(String pilmpTypeCd) {
+		this.pilmpTypeCd = pilmpTypeCd;
+	}
+	public String getPilmpDeviceCd() {
+		return pilmpDeviceCd;
+	}
+	public void setPilmpDeviceCd(String pilmpDeviceCd) {
+		this.pilmpDeviceCd = pilmpDeviceCd;
+	}
+	public String getPilmpTelecomCd() {
+		return pilmpTelecomCd;
+	}
+	public void setPilmpTelecomCd(String pilmpTelecomCd) {
+		this.pilmpTelecomCd = pilmpTelecomCd;
+	}
+	public String getPilmaoUrl() {
+		return pilmaoUrl;
+	}
+	public void setPilmaoUrl(String pilmaoUrl) {
+		this.pilmaoUrl = pilmaoUrl;
+	}
+	public String getPiljqAnswer() {
+		return piljqAnswer;
+	}
+	public void setPiljqAnswer(String piljqAnswer) {
+		this.piljqAnswer = piljqAnswer;
+	}
+	public String getPilmaAddress2() {
+		return pilmaAddress2;
+	}
+	public void setPilmaAddress2(String pilmaAddress2) {
+		this.pilmaAddress2 = pilmaAddress2;
+	}
+	public String getPilmaAddress1() {
+		return pilmaAddress1;
+	}
+	public void setPilmaAddress1(String pilmaAddress1) {
+		this.pilmaAddress1 = pilmaAddress1;
+	}
+	public String getPilmaZipcode() {
+		return pilmaZipcode;
+	}
+	public void setPilmaZipcode(String pilmaZipcode) {
+		this.pilmaZipcode = pilmaZipcode;
+	}
+	public String getPilatesmemberphoneCd() {
+		return pilatesmemberphoneCd;
+	}
+	public void setPilatesmemberphoneCd(String pilatesmemberphoneCd) {
+		this.pilatesmemberphoneCd = pilatesmemberphoneCd;
 	}
 	
 	

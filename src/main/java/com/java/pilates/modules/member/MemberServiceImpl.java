@@ -1,9 +1,15 @@
 package com.java.pilates.modules.member;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.java.pilates.modules.code.Code;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -55,8 +61,7 @@ public class MemberServiceImpl implements MemberService{
 		return dao.delete(vo);
 	}
 
-
-
+	
 	
 
 

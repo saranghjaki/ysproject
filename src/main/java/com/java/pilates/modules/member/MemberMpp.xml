@@ -9,7 +9,7 @@
     <resultMap id="resultMapObj" type="com.java.pilates.modules.member.Member"></resultMap>
 
 	<sql id="selectCommon">
-		
+			<!-- AND pilmmGenderCd = #{pilmmGenderCd } -->
 			<choose>
 				<when test="shPilmmDelNy==1">AND pilmmDelNy=1</when>
 				<when test="shPilmmDelNy==0">AND pilmmDelNy=0</when>
@@ -20,8 +20,14 @@
 				<when test="shOption == 1">AND pilmmName LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 2">AND pilmmId LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 3">AND pilmmMemberNumber LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 4">AND pilmmMemberNumber LIKE CONCAT('%',#{shValue},'%')</when>
+				
 				</choose> 
-				where pilmmGenderCd == 63
+				<choose>
+				<when test="pilmmGenderCd==#{pilcdSeq}">AND pilmmGenderCd=#{pilcdSeq}</when>
+			
+			</choose>
+				
 
 	</sql>
 	
@@ -48,9 +54,10 @@
 				        LEFT JOIN PILATESPROGRAM AS e ON e.pilpgSeq=d.pilpgSeq
 				        LEFT JOIN PILLATESMEMBERJOINQNA AS f ON f.pilmmSeq=a.pilmmSeq				      
        				  WHERE 1=1
+       				  
        				  <include refid="selectCommon" />
        				  AND a.pilmmDelNy = 0
-					ORDER BY pilmmSeq DESC
+					ORDER BY pilmmSeq 
 						limit #{startRnumForMysql}, #{rowNumToShow}		
 					
 	</select>
@@ -85,15 +92,31 @@
 	</selectKey>
 	</insert>
 	<select id="selectOne" resultMap="resultMapObj">
+		
 			SELECT 
-				pilmmSeq
+				a.pilmmSeq
 				, a.pilmmName
+				,a.pilmmId
 				,a.pilmmDob
-			
-		FROM
-			 nct.pilatesmember a
-		WHERE 1=1
-			AND pilmmSeq = #{pilmmSeq}
+                ,(select pilcdName from PILATESCODE as f  where 1=1 and  pilcgSeq=12 and  f.pilcdSeq =b.piljqQuestionCd)as piljqQuestionCd
+			    ,b.piljqAnswer
+				,c.pilmaAddress1
+                ,c.pilmaAddress2
+                ,c.pilmaZipcode
+                ,(select pilcdName from PILATESCODE as f where 1=1 and  pilcgSeq=23 and f.pilcdSeq =d.pilmpTypeCd)as pilmpTypeCd
+                ,(select pilcdName from PILATESCODE as f where 1=1 and  pilcgSeq=24 and f.pilcdSeq =d.pilmpDeviceCd)as pilmpDeviceCd
+                ,(select pilcdName from PILATESCODE as f  where 1=1 and  pilcgSeq=25 and  f.pilcdSeq =d.pilmpTelecomCd)as pilmpTelecomCd
+                ,(select pilcdName from PILATESCODE as f  where 1=1 and  pilcgSeq=35 and  f.pilcdSeq =d.pilatesmemberphoneCd)as pilatesmemberphoneCd
+                ,d.pilmpNumber
+               	 ,e.pilmaoUrl
+			FROM
+			 nct.pilatesmember as a
+				LEFT JOIN PILLATESMEMBERJOINQNA AS b on b.pilmmSeq = a.pilmmSeq
+				LEFT JOIN PILATESMEMBERADDRESS AS c on c.pilmmSeq = a.pilmmSeq
+				LEFT JOIN PILATESMEMBERPHONE AS d on d.pilmmSeq = a.pilmmSeq
+				LEFT JOIN PILATESMEMBERADDRESSONLINE AS e on e.pilmmSeq = a.pilmmSeq
+				WHERE 1=1
+			AND a.pilmmSeq=#{pilmmSeq}
 	</select>
 	
 	
@@ -125,6 +148,18 @@
 			AND pilmmSeq =#{pilmmSeq }
 
 	</delete>
+	
+	<select id="selectListForCache" resultMap="resultMapObj">
+	
+		SELECT
+			pilinSeq
+		 	,pilinName
+		 FROM  
+			 PILATESINSTRUCTOR 
+		 WHERE 1=1 
+		 AND pilinSeq= d.pilinSeq
+			
+	</select>
 	
 	
 </mapper>
