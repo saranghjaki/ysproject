@@ -181,7 +181,9 @@
 					</div>
 				</div>
 			</div> -->
-		<form id="" name="" method="get" action="/pilates/xdmin/member/memberList">
+			<form id="formList" name="formList" method="post" action="/pilates/xdmin/member/memberList">
+			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/> " >
+			<input type="hidden" id="pilmmSeq" name="pilmmSeq" >
 			<div class="accordion" id="accordionExample">
 			  <div class="accordion-item">
 			    <h2 class="accordion-header" id="headingOne">
@@ -195,12 +197,14 @@
 							<div class="row  row-cols-1 row-cols-md-4">
 							<div class ="col col-sm-12  col-md-3 ">	
 								<div class="input-group mb-2">
-								<select  class=" form-select dropdown-toggle" "  data-toggle="dropdown" >
+								<select  name="shOption" id="shOption"  class=" form-select dropdown-toggle" "  data-toggle="dropdown" >
 									<div class=" dropdown-menu  " aria-labelledby="dropdownmenu">
-								     	<option value="1" selected>가입일</option> 
-									 	<option value="2">만료일</p></option>
-									 	<option value="3">시작일</option>
-									 	<option value="4">생일</option>
+								     	<option value="">::검색구분::
+										<option value="1"<c:if test="${vo.shOption eq 1 }">selected</c:if>>::이름::
+										<option value="2"<c:if test="${vo.shOption eq 2 }">selected</c:if>>::아이디::
+										<option value="3"<c:if test="${vo.shOption eq 3 }">selected</c:if>>::전화번호::
+										<option value="2"<c:if test="${vo.shOption eq 4 }">selected</c:if>>::::
+										<option value="2"<c:if test="${vo.shOption eq 5 }">selected</c:if>>::아이디::
 									   </div> 
 								   </select> 
 							 	</div>
@@ -213,17 +217,17 @@
 							</div>
 							<div class="col-sm-6 col-md-3">
 								<div class="input-group">
-								  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-								    <option selected>기간선택</option>
-								    <option value="1">1일</option>
-								    <option value="2">3일</option>
-								    <option value="3">5일</option>
-								    <option value="4">7일</option>
-								    <option value="5">14일</option>
-								    <option value="6">20일</option>
-								    <option value="7">30일</option>
-								  </select>
-								  <button class="btn btn-outline-secondary" type="button">검색</button>
+								<select name="shPilcgSeq">
+								
+								
+								  <select class="form-select"  class="form-select"  name=" pilmmGenderCd">
+								    		<select name=" pilmmGenderCd">
+											<option value="">::성별::</option>
+												<c:forEach items="${codeGender}" var="itemGender" varStatus="statusGender">
+											<option value="<c:out value="${itemGender.pilcdSeq}"/>"<c:if test="${itemGender.pilmmSeq eq itemGender.pilcdSeq}">selected</c:if>> <c:out value="${itemGender.pilcdName}"></c:out></option>
+												</c:forEach>	
+									<input  type="text" class=" form-control" name="shValue"id= "shValue" value="<c:out value = "${vo.shValue }"/>">
+								  <button class="btn btn-outline-secondary"type="submit" id="btnSubmit"  name="search">검색</button>
 								</div>
 							</div>
 						</div>
@@ -243,11 +247,8 @@
 							<div class="row  row-cols-1 row-cols-md-4">
 							<div class ="col col-sm-12  col-md-3 ">	
 								<div class="input-group mb-2">
-								<select  name="shPilmmDelNy" id="shPilmmDelNy" class=" form-select dropdown-toggle" "  data-toggle="dropdown" >
+								<select  class=" form-select dropdown-toggle" "  data-toggle="dropdown" >
 									<div class=" dropdown-menu  " aria-labelledby="dropdownmenu">
-								     	<option value="">::삭제여부::
-										<option value="1"<c:if test="${vo.shPilmmDelNy eq 1 }">selected</c:if>>::Y::
-										<option value="0"<c:if test="${vo.shPilmmDelNy eq 0 }">selected</c:if>>::N::</option>
 								     	<option value="1" selected>회원명</option> 
 								  	 	<option value="2">담담자</p></option>
 									 	<option value="3">카드번호</option>
@@ -257,19 +258,13 @@
 								   </select> 
 							 	</div>
 							</div>
-							<select name="shOption" id="shOption">
-	<option value="">::검색구분::
-	<option value="1"<c:if test="${vo.shOption eq 1 }">selected</c:if>>::이름::
-	<option value="2"<c:if test="${vo.shOption eq 2 }">selected</c:if>>::아이디::
-</select>
-						 <input type="text" name="shPilmmName" id="shPilmmName" value="<c:out value ="${vo.shPilmmName }"/>">
-							
 								<div class ="col col-sm-6  col-md-3 ">	
-						  			 <input class=" form-control"  type="text" name="shValue"id= "shValue" value="<c:out value = "${vo.shValue }"/>">
-						  			 <input  type="text" class=" form-control" aria-label="Text input with dropdown button">
+						  			<input type="hidden" name="rowNumToShow " id="rowNumToShow " value="10">
+						  			<input type="hidden" name="pageNumToShow" id="pageNumToShow" value="5">
+						  			<input  type="text" class=" form-control" aria-label="Text input with dropdown button">
 								</div>
 								<div class="col-sm-6 col-md-3">
-									  <button class="btn btn-outline-secondary"  type="submit" id="btnSubmit"  name="search">검색</button>
+									  <button class="btn btn-outline-secondary" type="button">검색</button>
 								</div>
 							</div>
 						</div>
@@ -277,7 +272,11 @@
 	     	   </div>
 	    	</div>
 	   	 </div>
-
+	  </div>
+			
+			
+			
+			
 			
 			
 		
@@ -368,7 +367,7 @@
 	<option value="1"<c:if test="${vo.shOption eq 1 }">selected</c:if>>::이름::
 	<option value="2"<c:if test="${vo.shOption eq 2 }">selected</c:if>>::아이디::
 </select>
-	회원이름: <input type="text" name="shPilmmName" id="shPilmmName" value="<c:out value ="${vo.shPilmmName }"/>">
+	회원이름:  <input type="text" name="shValue"id= "shValue" value="<c:out value = "${vo.shValue }"/>">
 
  <input type="submit" id="btnSubmit"  name="search">
  <br>
@@ -396,35 +395,70 @@
 	
 
 
-
 <nav aria-label="...">
-  <ul class="pagination">
-  
-		<c:if test="${vo.startPage gt vo.pageNumToShow}">
-		                <li class="page-item"><a class="page-link" href="/infra/code/codeGroupList?thisPage=${vo.startPage - 1}">Previous</a></li>
+	<ul class="pagination">
+		<c:if test="${vo.startPage gt vo.pageNumToShow}">	
+			<li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${vo.startPage - 1}'/>);">Previous</a></li>
 		</c:if>
+		
 		<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
 			<c:choose>
 				<c:when test="${i.index eq vo.thisPage}">
-		                <li class="page-item active"><a class="page-link" href="/pilates/xdmin/member/memberList?thisPage=${i.index}">${i.index}</a></li>
+					<li class="page-item active"><a class="page-link" href="javascript:goList(<c:out value='${i.index}'/>);">${i.index}</a></li>
 				</c:when>
 				<c:otherwise>             
-		                <li class="page-item"><a class="page-link" href="/pilates/xdmin/member/memberList?thisPage=${i.index}">${i.index}</a></li>
+					<li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${i.index}'/>);">${i.index}</a></li>
 				</c:otherwise>
 			</c:choose>
-		</c:forEach>     
-		<c:if test="${vo.endPage ne vo.totalPages}">                
-		                <li class="page-item"><a class="page-link" href="/pilates/xdmin/member/memberList?thisPage=${vo.endPage + 1}">Next</a></li>
-		</c:if>  
-  </ul>
-</nav>
+		</c:forEach>  
 		
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/pilates/resources/common/js/validation.js"></script> <!-- js위치선정 -->
+		<c:if test="${vo.endPage ne vo.totalPages}">                
+			<li class="page-item"><a class="page-link" href="javascript:goList(<c:out value='${vo.endPage + 1}'/>);">Next</a></li>
+		</c:if>  
+	</ul>
+</nav>
+<a href="/pilates/xdmin/member/memberForm?&thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">등록</a>
+
+
+
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script >
+
+<script type ="text/javascript">
+	$("#btnSubmit").on("click",funtion(){
+		/* alert($("#shOption").val()); */
+		
+		alert($("#shPilName").val());  //jquery 방식
+		confirm("진짜 삭제하시겠습니까?");
+	});
+</script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
 <script type="text/javascript">
+	$("#btnSubmit").on("click",function(){
+		/* if(!checkNull($("#shpilcgName"), $("#shpilcgName").val(), "코드그룹 이름을 입력해주세요!")) return false; */
+		if(!checkNull($("#shValue"), $("#shValue").val(), "검색어를 입력해주세요!")) return false;			
+	});
 	
-			</script>
+	
+	
+	goList = function(seq){
+		alert(seq);
+		//form 객체를 가져온다
+		$("#thisPage").val(seq);
+		$("#formList").submit();
+		//가져온 객체를 전달한다
+	}
+	
+	goForm = function(seq){
+		alert(seq);
+		$("#pilmmSeq").val(seq);
+		$("#formList").attr("action","/pilates/xdmin/member/memberView");
+		$("#formList").submit();
+	}
+</script>
     <!-- e -->
 
     <!-- Optional JavaScript; choose one of the two! -->

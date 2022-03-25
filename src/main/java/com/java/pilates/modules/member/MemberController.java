@@ -40,6 +40,7 @@ public class MemberController {
 			}else { 
 			
 			}
+			model.addAttribute("codeGender",CodeServiceImpl.selectListForCache("33"));
 			//model.addAttribute("vo",vo); 
 		return "xdmin/member/memberList";
 	}

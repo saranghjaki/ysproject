@@ -584,12 +584,13 @@
 	
 	
 	<!-- test -->
-	<select name=" pilmmGenderCd">
+	<select name=" pilmmGenderCd" id="pilmmGenderCd">
 	<option value="">::성별::</option>
 		<c:forEach items="${codeGender}" var="itemGender" varStatus="statusGender">
-	<option value="<c:out value="${itemGender.pilcdSeq}"/>"<c:if test="${itemGender.pilmmSeq eq itemGender.pilcdSeq}">selected</c:if>> <c:out value="${itemGender.pilcdName}"></c:out></option>
+			<option value="<c:out value="${itemGender.pilcdSeq}"/>"<c:if test="${itemGender.pilmmSeq eq itemGender.pilcdSeq}">selected</c:if>> <c:out value="${itemGender.pilcdName}"></c:out></option>
 		</c:forEach>	
-</select>
+		
+	</select>
 		<form id="form" method="post" action="/pilates/xdmin/member/memberInst"> 
 	 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
      <input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>">

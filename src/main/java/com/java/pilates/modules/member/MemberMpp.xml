@@ -15,10 +15,13 @@
 				<when test="shPilmmDelNy==0">AND pilmmDelNy=0</when>
 			</choose>
 				<if test="shPilmmName != null and !shPilmmName.equals('')">  AND pilmmName LIKE concat('%', #{shPilmmName}, '%')</if> 
-		 <choose>
-				<when test="shOption == 1">AND a.pilmmName LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 2">AND a.pilmmId LIKE CONCAT('%',#{shValue},'%')</when>
-				</choose>
+				
+			 <choose>
+				<when test="shOption == 1">AND pilmmName LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND pilmmId LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND pilmmMemberNumber LIKE CONCAT('%',#{shValue},'%')</when>
+				</choose> 
+				where pilmmGenderCd == 63
 
 	</sql>
 	
