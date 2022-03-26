@@ -66,22 +66,31 @@
  <body  >
 
 	
+	
+	<form id=goForm " method="post" action="/pilates/xdmin/member/memberInst"> 
+	 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+     <input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>">
+     <input type="hidden" name="shValue" value="<c:out value="${vo.shValue}"/>">  
+     <input type="hidden" name="" >  
+			<div class="accordion" id="accordionExample">
+			  <div class="accordion-item">
+	
 	<div class="container justify-content-center ">
 	  <div class="row row-sm-12 mt-2  ">
 	    <div id ="mainline" class="col p-0">
-	       <a class="p-0 nav-link active" aria-current="page" href="# ">
+	       <a class="p-0 nav-link active" aria-current="page"  href="/pilates/xdmin/member/memberForm?&thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>" >
 	       <p style="font-size:2vmin; text-align :center">작업종료</p> </a>
 	    </div>
 	    <div id ="mainline"  class="col p-0">
-	     <a class=" p-0 nav-link" href="">
-	     <p style=" font-size:2vmin; text-align :center">회원등록</p> </a>
+	     <a class=" p-0 nav-link"  href="/pilates/xdmin/member/memberForm?&thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>" >
+	     <p style="font-size:2vmin; text-align :center">회원등록</p> </a>
 	    </div>
 	    <div id ="mainline"  class="col p-0 ">
-	       <a class=" p-0 nav-link" href="#">
+	       <a class=" p-0 nav-link"  href="javascript:goList()">
 	       <p style="font-size:2vmin; text-align :center">회원관리</p> </a>
 	    </div>
 	    <div id ="mainline"  class="col p-0">
-	       <a class=" p-0 nav-link" href="#">
+	       <a class=" p-0 nav-link"  href="/pilates/xdmin/member/memberForm?&thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>" >
 	       <p style="font-size:2vmin; text-align :center">예약관리</p></a>
 	    </div>
 	  </div>
@@ -125,8 +134,9 @@
 					    </div>
 					    <div id ="mainline"  class="col p-0">
 					     <a class=" p-0 nav-link" href="#">
-					     <p style=" font-size:2vmin; text-align :center">회원등록</p> </a>
+					     <a href="/pilates/xdmin/member/memberForm?&thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>" p style=" font-size:2vmin; text-align :center">회원등록</p> </a>
 					    </div>
+					
 				 <!--  <li class="fw-bolder fs-5">
 				  	<span>만료일 D-00일</span>
 				  		<br>
@@ -162,11 +172,6 @@
 
 <!-- member form s-->
 
-	<form id=goForm " method="post" action="/pilates/xdmin/member/memberInst"> 
-	 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
-     <input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>">
-     <input type="hidden" name="shValue" value="<c:out value="${vo.shValue}"/>">  
-     <input type="hidden" name="" >  
 		<div class="container ">
 			<table class="table table-bordered table-lg ">
 				<colgroup>

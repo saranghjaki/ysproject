@@ -126,6 +126,10 @@
 				PILATESMEMBER 
 			SET 
 				pilmmName = #{pilmmName}
+				pilmmPassword = #{pilmmPassword}
+				pilmmId= #{pilmmId}
+				pilmmSeq = #{pilmmSeq}
+				
 			WHERE 1=1
 				AND  pilmmSeq = #{pilmmSeq}
 	</update> 

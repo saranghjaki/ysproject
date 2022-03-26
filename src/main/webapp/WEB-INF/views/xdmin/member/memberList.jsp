@@ -64,24 +64,28 @@
   </head>
   
  <body  >
-
+<form id="formList" name="formList" method="post" action="/pilates/xdmin/member/memberList">
+			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/> " >
+			<input type="hidden" id="pilmmSeq" name="pilmmSeq" >
+			<div class="accordion" id="accordionExample">
+			  <div class="accordion-item">
 	
 	<div class="container justify-content-center ">
 	  <div class="row row-sm-12 mt-2  ">
 	    <div id ="mainline" class="col p-0">
-	       <a class="p-0 nav-link active" aria-current="page" href="# ">
+	       <a class="p-0 nav-link active" aria-current="page"  href="/pilates/xdmin/member/memberForm?&thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>" >
 	       <p style="font-size:2vmin; text-align :center">작업종료</p> </a>
 	    </div>
 	    <div id ="mainline"  class="col p-0">
-	     <a class=" p-0 nav-link" href="">
-	     <p style=" font-size:2vmin; text-align :center">회원등록</p> </a>
+	     <a class=" p-0 nav-link"  href="/pilates/xdmin/member/memberForm?&thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>" >
+	     <p style="font-size:2vmin; text-align :center">회원등록</p> </a>
 	    </div>
 	    <div id ="mainline"  class="col p-0 ">
-	       <a class=" p-0 nav-link" href="#">
+	       <a class=" p-0 nav-link"  href="javascript:goList()">
 	       <p style="font-size:2vmin; text-align :center">회원관리</p> </a>
 	    </div>
 	    <div id ="mainline"  class="col p-0">
-	       <a class=" p-0 nav-link" href="#">
+	       <a class=" p-0 nav-link"  href="/pilates/xdmin/member/memberForm?&thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>" >
 	       <p style="font-size:2vmin; text-align :center">예약관리</p></a>
 	    </div>
 	  </div>
@@ -125,8 +129,9 @@
 					    </div>
 					    <div id ="mainline"  class="col p-0">
 					     <a class=" p-0 nav-link" href="#">
-					     <p style=" font-size:2vmin; text-align :center">회원등록</p> </a>
+					     <a href="/pilates/xdmin/member/memberForm?&thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>" p style=" font-size:2vmin; text-align :center">회원등록</p> </a>
 					    </div>
+					
 				 <!--  <li class="fw-bolder fs-5">
 				  	<span>만료일 D-00일</span>
 				  		<br>
@@ -181,11 +186,7 @@
 					</div>
 				</div>
 			</div> -->
-			<form id="formList" name="formList" method="post" action="/pilates/xdmin/member/memberList">
-			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/> " >
-			<input type="hidden" id="pilmmSeq" name="pilmmSeq" >
-			<div class="accordion" id="accordionExample">
-			  <div class="accordion-item">
+			
 			    <h2 class="accordion-header" id="headingOne">
 			      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 			       회원검색
@@ -344,43 +345,6 @@
 	
 	
 	
-	<form id="" name="" method="get" action="/pilates/xdmin/member/memberList">
-<select name="shPilmmDelNy" id="shPilmmDelNy">
-	<option value="">::삭제여부::
-	<option value="1"<c:if test="${vo.shPilmmDelNy eq 1 }">selected</c:if>>::Y::
-	<option value="0"<c:if test="${vo.shPilmmDelNy eq 0 }">selected</c:if>>::N::</option>
-</select>
- <select name="shOption" id="shOption">
-	<option value="">::검색구분::
-	<option value="1"<c:if test="${vo.shOption eq 1 }">selected</c:if>>::이름::
-	<option value="2"<c:if test="${vo.shOption eq 2 }">selected</c:if>>::아이디::
-</select>
-	회원이름:  <input type="text" name="shValue"id= "shValue" value="<c:out value = "${vo.shValue }"/>">
-
- <input type="submit" id="btnSubmit"  name="search">
- <br>
-
-
-<c:choose>
-	<c:when test="${fn:length(list) eq 0}">
-		<tr>
-			<td class="text-center" colspan="9">There is no data!</td>
-		</tr>	
-	</c:when>
-	<c:otherwise>
-		<c:forEach items="${list}" var="item" varStatus="status">	
-		
-		<c:out value="${item.pilmmSeq}"/> 
-		<a href="/pilates/xdmin/member/memberView?pilmmSeq=<c:out value="${item.pilmmSeq}"/>">
-		<c:out value="${item.pilmmName}"/></a>
-		| <c:out value="${item.pilmmId}"/> <br>
-	
-		</c:forEach>
-	</c:otherwise>
-</c:choose>	 
-</form>
-
-	
 
 
 <nav aria-label="...">
@@ -405,7 +369,7 @@
 		</c:if>  
 	</ul>
 </nav>
-<a href="/pilates/xdmin/member/memberForm?&thisPage=<c:out value="${vo.thisPage}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">등록</a>
+
 
 
 
